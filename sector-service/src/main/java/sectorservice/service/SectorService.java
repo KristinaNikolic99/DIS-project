@@ -17,4 +17,8 @@ public class SectorService {
 	public List<Sector> getAllSectors() {
 		return sectorRepository.findAll();
 	}
+	
+	public Sector getSectorById(long sectorId) {
+		return sectorRepository.findById(sectorId).orElse(null);
+	}
 }

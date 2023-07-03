@@ -14,6 +14,8 @@ public class APIGatewayConfiguration {
 				route(p -> p.path("/api/company/**").uri("lb://company-service"))
 				.route(p -> p.path("/api/sector/**").uri("lb://sector-service"))
 				.route(p -> p.path("/api/education/**").uri("lb://education-service"))
+				.route(p -> p.path("/api/healthcard/**").uri("lb://healthcard-service"))
+				.route(p -> p.path("/api/employee/**").uri("lb://employee-service"))
 				.build();
 	}
 }

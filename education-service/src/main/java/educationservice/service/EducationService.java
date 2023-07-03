@@ -17,4 +17,8 @@ public class EducationService {
 	public List<Education> getAllEducations() {
 		return educationRepository.findAll();
 	}
+	
+	public Education getEducationById(long educationId) {
+		return educationRepository.findById(educationId).orElse(null);
+	}
 }

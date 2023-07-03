@@ -17,4 +17,8 @@ public class HealthcardService {
 	public List<Healthcard> getAllhealthcards() {
 		return healthcardRepository.findAll();
 	}
+	
+	public Healthcard getHealthcardById(long healthcardId) {
+		return healthcardRepository.findById(healthcardId).orElse(null);
+	}
 }
