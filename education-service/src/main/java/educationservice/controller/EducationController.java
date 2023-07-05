@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import educationservice.model.Education;
 import educationservice.service.EducationService;
+import io.github.resilience4j.ratelimiter.annotation.RateLimiter;
 
 @RestController
 @RequestMapping(value = "/api/education")
@@ -20,6 +21,7 @@ public class EducationController {
 	@Autowired
 	private EducationService educationService;
 	
+	@RateLimiter(name = "default")
 	@GetMapping("/getAll")
 	public ResponseEntity<List<Education>> getAllEducations() {
 		return new ResponseEntity<List<Education>>(educationService.getAllEducations(), HttpStatus.OK);
