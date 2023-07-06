@@ -21,4 +21,8 @@ public class SectorService {
 	public Sector getSectorById(long sectorId) {
 		return sectorRepository.findById(sectorId).orElse(null);
 	}
+	
+	public Sector createSector(Sector sector) {
+		return sectorRepository.save(sector);
+	}
 }

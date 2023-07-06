@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import employeeservice.VO.HealthcardVO;
 
-@FeignClient(name = "healthcard-service")
+@FeignClient(name = "healthcard-service", fallback = ProxyFallbacks.class)
 public interface HealthcardProxy {
 
 	@GetMapping("/api/healthcard/getById/{id}")

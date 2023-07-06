@@ -56,4 +56,15 @@ public class EmployeeService {
 		return responseTemplateVO;
 	}
 	
+	public Employee createEmployee(Employee employee) {
+		CompanyVO company = companyProxy.getCompanyById(employee.getCompanyId());
+		EducationVO education = educationProxy.getEducationById(employee.getEducationId());
+		SectorVO sector = sectorProxy.getSectorById(employee.getSectorId());
+		HealthcardVO healthcard = healthcardProxy.getHealthcardById(employee.getHealthcardId());
+		if(company == null || education == null || sector == null || healthcard == null) {
+			return null;
+		}
+		return employeeRepository.save(employee);
+	}
+	
 }

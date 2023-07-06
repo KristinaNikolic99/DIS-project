@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import healthcardservice.model.Healthcard;
@@ -20,7 +22,7 @@ public class HealthcardController {
 	private HealthcardService healthcardService;
 	
 	@GetMapping("/getAll")
-	public ResponseEntity<List<Healthcard>> getAllCompanies() {
+	public ResponseEntity<List<Healthcard>> getAllHealthcards() {
 		return new ResponseEntity<List<Healthcard>>(healthcardService.getAllhealthcards(), HttpStatus.OK);
 	}
 	
@@ -31,5 +33,14 @@ public class HealthcardController {
 			return new ResponseEntity<Healthcard>(healthcard, HttpStatus.OK);
 		}
 		return new ResponseEntity<Healthcard>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping("/create")
+	public ResponseEntity<Healthcard> createHealthcard(@RequestBody Healthcard healthcard) {
+		Healthcard newHealthcard = healthcardService.createHealthcard(healthcard);
+		if(healthcard == null) {
+			return new ResponseEntity<Healthcard>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<Healthcard>(newHealthcard, HttpStatus.OK);
 	}
 }

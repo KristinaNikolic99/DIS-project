@@ -19,4 +19,8 @@ public class CompanyService {
 	public Company getCompanyById(long companyId) {
 		return companyRepository.findById(companyId).orElse(null);
 	}
+	
+	public Company createCompany(Company company) {
+		return companyRepository.save(company);
+	}
 }

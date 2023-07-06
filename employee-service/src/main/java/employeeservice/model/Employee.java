@@ -2,6 +2,8 @@ package employeeservice.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
@@ -17,6 +19,7 @@ import lombok.Setter;
 public class Employee {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long employeeId;
 	@Column(name = "first_name")
 	private String firstName;

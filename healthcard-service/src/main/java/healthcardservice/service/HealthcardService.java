@@ -21,4 +21,8 @@ public class HealthcardService {
 	public Healthcard getHealthcardById(long healthcardId) {
 		return healthcardRepository.findById(healthcardId).orElse(null);
 	}
+	
+	public Healthcard createHealthcard(Healthcard healthcard) {
+		return healthcardRepository.save(healthcard);
+	}
 }

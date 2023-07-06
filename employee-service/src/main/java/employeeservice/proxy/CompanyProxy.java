@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import employeeservice.VO.CompanyVO;
 
-@FeignClient(name = "company-service")
+@FeignClient(name = "company-service", fallback = ProxyFallbacks.class)
 public interface CompanyProxy {
 
 	@GetMapping("/api/company/getById/{id}")

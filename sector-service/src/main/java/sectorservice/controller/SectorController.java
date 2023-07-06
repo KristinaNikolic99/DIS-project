@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +34,14 @@ public class SectorController {
 			return new ResponseEntity<Sector>(sector, HttpStatus.OK);
 		}
 		return new ResponseEntity<Sector>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping("/create")
+	public ResponseEntity<Sector> createSector(@RequestBody Sector sector) {
+		Sector newSector = sectorService.createSector(sector);
+		if(newSector == null) {
+			return new ResponseEntity<Sector>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<Sector>(newSector, HttpStatus.CREATED);
 	}
 }

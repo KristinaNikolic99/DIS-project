@@ -21,4 +21,8 @@ public class EducationService {
 	public Education getEducationById(long educationId) {
 		return educationRepository.findById(educationId).orElse(null);
 	}
+	
+	public Education createEducation(Education education) {
+		return educationRepository.save(education);
+	}
 }

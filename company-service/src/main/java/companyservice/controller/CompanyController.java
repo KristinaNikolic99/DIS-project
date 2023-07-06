@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import companyservice.model.Company;
@@ -30,5 +32,14 @@ public class CompanyController {
 			return new ResponseEntity<Company>(company, HttpStatus.OK);
 		}
 		return new ResponseEntity<Company>(HttpStatus.NOT_FOUND);
+	}
+	
+	@PostMapping("/create")
+	public ResponseEntity<Company> createCompany(@RequestBody Company company) {
+		Company newCompany = companyService.createCompany(company);
+		if(newCompany == null) {
+			return new ResponseEntity<Company>(HttpStatus.BAD_REQUEST);
+		}
+		return new ResponseEntity<Company>(newCompany, HttpStatus.CREATED);
 	}
 }

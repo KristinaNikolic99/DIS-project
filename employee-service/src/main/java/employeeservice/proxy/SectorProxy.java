@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import employeeservice.VO.SectorVO;
 
-@FeignClient(name = "sector-service")
+@FeignClient(name = "sector-service", fallback = ProxyFallbacks.class)
 public interface SectorProxy {
 
 	@GetMapping("/api/sector/getById/{id}")
