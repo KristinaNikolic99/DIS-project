@@ -13,3 +13,6 @@ Takođe, na samom početku obezbeđena je i jwt autentikacija korišćenjem spri
 Pored toga, implementiran je i tracing sistem koji je odgovoran za praćenje toka izvršavanja jedne konkretne instance nekog mikroservisa, odnosno praćenje requesta koji prolazi kroz ostale mikroservise. Ovaj sistem je povezan za svakim mikroservisom i svaki od njega mu šalje određene informacije kada request dođe do njega, a tracing sistem nam onda tačno prikazuje gde se dogodila greška(ako je do nje došlo) i celokupan tok izvršavanja što pruža pomoć prilikom monitoringa.
 
 Isto tako, implementiran je i docker koji nam omogućava da pokrenemo bilo koju aplikacjiu na bilo kojem računaru. Za svaki mikroservis (projekat) je napravljen kao image i dodat na docker hub kako bi se omogućio uspešan build svih komponenti aplikacije sa različitih računara, a u okviru docker-compose.yaml fajla dodate su sve neophodne instrukcije kako bi to pokretanje na kraju bilo uspešno.
+
+## Class diagram
+![Class diagram](class-diagram (1).jpeg)
