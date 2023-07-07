@@ -16,3 +16,6 @@ Isto tako, implementiran je i docker koji nam omogućava da pokrenemo bilo koju 
 
 ## Class diagram
 ![Class diagram](classDiagram.jpeg)
+
+## Microservice architecture
+![Architecture diagram](arhitektura.png)
