@@ -15,4 +15,4 @@ Pored toga, implementiran je i tracing sistem koji je odgovoran za praćenje tok
 Isto tako, implementiran je i docker koji nam omogućava da pokrenemo bilo koju aplikacjiu na bilo kojem računaru. Za svaki mikroservis (projekat) je napravljen kao image i dodat na docker hub kako bi se omogućio uspešan build svih komponenti aplikacije sa različitih računara, a u okviru docker-compose.yaml fajla dodate su sve neophodne instrukcije kako bi to pokretanje na kraju bilo uspešno.
 
 ## Class diagram
-![Class diagram](class-diagram (1).jpeg)
+![Class diagram](classDiagram.jpeg)
