@@ -1,0 +1,112 @@
+version: '3.7'
+
+services: 
+  company-service:
+    image: kristina99/company-service:latest
+    mem_limit: 700m
+    ports:
+      - "8000:8000"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/      
+      
+  sector-service:
+    image: kristina99/sector-service:latest
+    mem_limit: 700m
+    ports:
+      - "8001:8001"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      
+  education-service:
+    image: kristina99/education-service:latest
+    mem_limit: 700m
+    ports:
+      - "8002:8002"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      
+  healthcard-service:
+    image: kristina99/healthcard-service:latest
+    mem_limit: 700m
+    ports:
+      - "8003:8003"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/ 
+
+  employee-service:
+    image: kristina99/employee-service:latest
+    mem_limit: 700m
+    ports:
+      - "8004:8004"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/  
+      
+  identity-service:
+    image: kristina99/identity-service:latest
+    mem_limit: 700m
+    ports:
+      - "8005:8005"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      
+  api-gateway:
+    image: kristina99/api-gateway:latest
+    mem_limit: 700m
+    ports:
+      - "8765:8765"
+    networks:
+      - employee-network
+    depends_on:
+      - naming-server
+    environment:
+      EUREKA.CLIENT.SERVICE-URL.DEFAULTZONE: http://naming-server:8761/eureka
+      SPRING.ZIPKIN.BASEURL: http://zipkin-server:9411/
+      
+  naming-server:
+    image: kristina99/naming-server:latest
+    mem_limit: 700m
+    ports:
+      - "8761:8761"
+    networks:
+      - employee-network      
+
+  zipkin-server:
+    image: openzipkin/zipkin:2.23
+    mem_limit: 300m
+    ports:
+      - "9411:9411"
+    networks:
+      - employee-network      
+ 
+networks:
+  employee-network:
